@@ -1,0 +1,69 @@
+
+body {
+    background: #eeeeee;
+    height: calc(100vh - 30px);
+    margin: 0;
+    padding: 15px;
+}
+
+@keyframes slidedown {
+    0% {
+        transform: rotateX(-90deg);
+    }
+    100% {
+        transform: rotateX(0);
+    }
+}
+
+.slidedown {
+    animation-name: slidedown;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    transform-origin: top;
+}
+
+#game-space {
+    width: 100%; 
+    min-width: 640px; 
+    margin: 0 auto; 
+    height: 100%;
+    min-height: 640px;
+    position: relative; 
+}
+
+#congrats {
+    display: none; 
+    width: 40%; 
+    text-align: center; 
+    border: 2px solid #00aa00; 
+    border-radius: 20px; 
+    background-color: #ccffcc; 
+    position: absolute; 
+    left: 30%; 
+    top: 25%; 
+}
+
+#instructions {
+    width: 50%;
+    left: 25%;
+    top: 25%;
+    position: absolute;
+    border: 2px solid #aa0000;
+    background-color: #ffcccc;
+    border-radius: 20px;
+}
+
+#instructions h1 {
+    text-align: center; 
+}
+
+#congrats p, #instructions p {
+    text-align: center;
+}
+
+#congrats input[type=button], #instructions input[type=button] {
+    border: 2px solid #000000; 
+    border-radius: 10px; 
+    font-size: 1.4em; 
+    padding: 5px 20px; 
+}

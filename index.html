@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Drag and Drop Puzzle</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+
+    <body>
+        <section id="game-space">
+            <canvas id="game-board"></canvas>
+            <div id="congrats">
+                <h1>You Win!</h1>
+                <h2>Congratulations!</h2>
+                <p><input type="button" id="playagainBtn" value="Play Again"></p>
+            </div>
+            <div id="instructions">
+                <h1>How to Play</h1>
+                <ul>
+                    <li>The puzzle pieces are scrambled in the piece drawer</li>
+                    <li>Each piece belongs somewhere in the grid</li>
+                    <li>Click and drag each piece to where it belongs</li>
+                </ul>
+                <p><input type="button" id="startBtn" value="Start!"></p>
+                <p>Photo by <a href="https://unsplash.com/photos/E0su4LQzQ4c?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Marco Secchi</a> on <a href="https://unsplash.com/t/animals?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+            </div>
+        </section>
+        <script type="text/javascript" src="js/puzzle.js"></script>
+        <script type="text/javascript">
+            // Everything is set up, get it all started when the document has loaded
+            window.addEventListener('load', function() { gameBoard.init(); });
+        </script>
+    </body>
+</html> 

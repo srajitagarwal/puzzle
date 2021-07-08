@@ -97,9 +97,9 @@ const gameBoard = {
     slots: [],
     pieceSpace: null,
     boardSpace: null,
-    pieceSize: 160,
-    MAX_PUZZLE_WIDTH: 640,
-    MAX_PUZZLE_HEIGHT: 480,
+    pieceSize: 250,
+    MAX_PUZZLE_WIDTH: 500,
+    MAX_PUZZLE_HEIGHT: 500,
     isDragging: false,
     
     // Begin the puzzle
@@ -123,13 +123,14 @@ const gameBoard = {
         this.context = this.canvas.getContext('2d');
         this.image = new Image();
         this.image.onload = function () { gameBoard.initPieces(); };
-        this.image.src = 'images/image1.jpg';
+        this.image.src = 'images/apple.jpg';
     },
     
     fitCanvas: function () {
         const gameSpace = document.getElementById('game-space');
-        this.canvas.width = gameSpace.clientWidth;
-        this.canvas.height = gameSpace.clientHeight;
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+
     },
 
     // Create the puzzle pieces and slots we'll be playing with

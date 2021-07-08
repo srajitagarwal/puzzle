@@ -1,6 +1,6 @@
 
 body {
-    background: #eeeeee;
+    background: #aefbffff;
     height: calc(100vh - 30px);
     margin: 0;
     padding: 15px;
@@ -32,12 +32,14 @@ body {
 }
 
 #congrats {
-    display: none; 
-    width: 40%; 
-    text-align: center; 
-    border: 2px solid #00aa00; 
-    border-radius: 20px; 
-    background-color: #ccffcc; 
+    display: none;
+    height: 160px;
+    width: 140px;
+    text-align: center;
+    background-image: url("../images/check-mark-clipart-transparent-6-removebg-preview.png");
+    /*border: 2px solid #00aa00; */
+    /*border-radius: 20px; */
+    /*background-color: #ccffcc; */
     position: absolute; 
     left: 30%; 
     top: 25%; 

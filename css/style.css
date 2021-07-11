@@ -66,13 +66,15 @@ body {
 
 #instructions h1 {
     text-align: center;
+    font: xx-large 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 12;
 }
 
 #congrats p, #instructions p, #level_2 p{
     text-align: center;
 }
 
-#congrats input[type=button], #instructions input[type=button], #level_2 input[type=button] {
+#congrats input[type=button], #instructions input[type=button], button, #level_2 input[type=button] {
     border: 2px solid #000000;
     background-color: black;
     color: white;
@@ -85,7 +87,7 @@ body {
 #playagainBtn{
     font-size: 2.5em;
 }
-#congrats input[type=button]:hover, #instructions input[type=button]:hover, #level_2 input[type=button]:hover {
+#congrats input[type=button]:hover, #instructions input[type=button]:hover ,button:hover,#level_2 input[type=button]:hover {
     border: 2px solid #000000;
     background-color: white;
     color: black;

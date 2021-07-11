@@ -23,7 +23,7 @@ ul li{
     padding:10px;
     margin:10px;
 }
-button{
+button,input[type=button]{
     border: 2px solid #000000; 
     background-color: black;
     color: white;
@@ -33,7 +33,7 @@ button{
     font: 1.8em 'Lucida Grande';
     padding: 5px 20px; 
 }
-button:hover{
+button:hover,input[type=button]:hover{
     border: 2px solid #000000; 
     background-color: white;
     color: black;
@@ -54,10 +54,11 @@ button:hover{
     padding: 5px;
     font: x-large 'Lucida Grande';
     width:205px;
+    border:3px solid black;
 }
 h3{
     font: xx-large 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    
+    letter-spacing: 12;
 }
  #name{
     margin-top: 15%;

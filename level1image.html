@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop Puzzle</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+<div><img src="images/apple.jpg" alt="Apple Image"></div>
+<form>
+    <a href="index.html" id="imagebutton">
+        <button>Start!</button>
+    </a></form>
+<script type="text/javascript" src="js/puzzle.js"></script>
+<script type="text/javascript">
+    // auto click on the button
+    onClickChange = function () {
+        return document.getElementById('imagebutton').click()
+    }
+    window.onload = function () {
+
+        setTimeout(onClickChange, 10000);
+    }
+</script>
+</body>
+</html>

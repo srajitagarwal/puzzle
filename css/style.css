@@ -1,9 +1,9 @@
 
 body {
     background: #aefbffff;
-    height: calc(100vh - 30px);
+    /*height: calc(100vh - 30px);*/
     margin: 0;
-    padding: 15px;
+    /*padding: 15px;*/
 }
 
 @keyframes slidedown {
@@ -23,49 +23,98 @@ body {
 }
 
 #game-space {
-    width: 100%; 
-    min-width: 640px; 
-    margin: 0 auto; 
+    width: 100%;
+    min-width: 640px;
+    margin: 0 auto;
     height: 100%;
     min-height: 640px;
-    position: relative; 
+    position: relative;
+}
+#game-board{
+    border:black;
 }
 
 #congrats {
     display: none;
-    height: 160px;
-    width: 140px;
+    height: 700px;
+    width: 500px;
     text-align: center;
-    background-image: url("../images/check-mark-clipart-transparent-6-removebg-preview.png");
+    /* background-image: url("../images/check-mark-clipart-transparent-6-removebg-preview.png") ; */
+    /* background-color: no-repeat; */
     /*border: 2px solid #00aa00; */
     /*border-radius: 20px; */
     /*background-color: #ccffcc; */
-    position: absolute; 
-    left: 30%; 
-    top: 25%; 
+    position: absolute;
+    left: 38%;
+    top: 15%;
 }
 
+#congo{
+    height:500px;
+}
 #instructions {
-    width: 50%;
-    left: 25%;
-    top: 25%;
+    width: 80%;
+    height:80%;
+    font: 2.5em 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    left: 10%;
+    top: 10%;
     position: absolute;
-    border: 2px solid #aa0000;
+    border: 2px solid black;
     background-color: #ffcccc;
-    border-radius: 20px;
+     border-radius: 460px;
 }
 
 #instructions h1 {
-    text-align: center; 
-}
-
-#congrats p, #instructions p {
     text-align: center;
 }
 
-#congrats input[type=button], #instructions input[type=button] {
-    border: 2px solid #000000; 
-    border-radius: 10px; 
-    font-size: 1.4em; 
-    padding: 5px 20px; 
+#congrats p, #instructions p, #level_2 p{
+    text-align: center;
+}
+
+#congrats input[type=button], #instructions input[type=button], #level_2 input[type=button] {
+    border: 2px solid #000000;
+    background-color: black;
+    color: white;
+    opacity: 75%;
+    padding:25px;
+    border-radius: 60px;
+    font: 1.8em 'Lucida Grande';
+    padding: 5px 20px;
+}
+#playagainBtn{
+    font-size: 2.5em;
+}
+#congrats input[type=button]:hover, #instructions input[type=button]:hover, #level_2 input[type=button]:hover {
+    border: 2px solid #000000;
+    background-color: white;
+    color: black;
+    opacity: 80%;
+    padding:25px;
+    border-radius: 60px;
+    font: 1.8em 'Lucida Grande';
+    /* font: 1.8em 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;  */
+    font-style: bold;
+    padding: 5px 20px;
+}
+
+ul li {
+    margin-left:200px;
+    padding:20px;
+}
+
+
+#level_2 {
+    width: 60%;
+    font: 2.5em 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    left: 20%;
+    top: 10%;
+    position: absolute;
+    border: 2px solid black;
+    background-color: #ffcccc;
+    border-radius: 460px;
+}
+
+#level_2 h1 {
+    text-align: center;
 }

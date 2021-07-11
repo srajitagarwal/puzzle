@@ -7,10 +7,10 @@ function Rectangle(left, top, right, bottom) {
     this.left = left;
     this.bottom = bottom;
     this.right = right;
-    
+
     this.width = right - left;
     this.height = bottom - top;
-    
+
     // Returns whether or not this Rectangle contains the given coordinate
     this.contains = function (x, y) {
         // y must be between top and bottom, x must be between left and right
@@ -28,11 +28,11 @@ function PuzzlePiece(imgX, imgY, boxSize) {
     this.imageX = imgX;
     this.imageY = imgY;
     this.width = this.height = boxSize;
-    
+
     this.isHighlighted = false;
-    
+
     this.imagePiece = new Rectangle(this.imageX, this.imageY, this.imageX + this.width, this.imageY + this.height);
-    
+
     // Set the x,y position of this piece on the board
     this.setBoardPosition = function (x, y) {
         this.boardPosition = new Rectangle(x, y, x + this.width, y + this.height);
@@ -49,7 +49,7 @@ class PuzzleSlot {
         this.boardBounds = boardBounds;
         this.targetPiece = targetPiece;
         this.heldPieces = new Set();
-        
+
         this.setTargetArea();
     }
 
@@ -98,10 +98,10 @@ const gameBoard = {
     pieceSpace: null,
     boardSpace: null,
     pieceSize: 250,
-    MAX_PUZZLE_WIDTH: 500,
+    MAX_PUZZLE_WIDTH: 750,
     MAX_PUZZLE_HEIGHT: 500,
     isDragging: false,
-    
+
     // Begin the puzzle
     init: function () {
         // Grab the canvas and context to work with, as well as the image
@@ -115,17 +115,17 @@ const gameBoard = {
             }
             gameBoard.redraw();
         });
-        
+
         this.fitCanvas();
         this.initSpaces();
-        
+
         // When puzzle image is loaded, initiate the pieces and slots
         this.context = this.canvas.getContext('2d');
         this.image = new Image();
         this.image.onload = function () { gameBoard.initPieces(); };
-        this.image.src = 'images/apple.jpg';
+        this.image.src = 'images/orangesave.jpg';
     },
-    
+
     fitCanvas: function () {
         const gameSpace = document.getElementById('game-space');
         this.canvas.width = window.innerWidth;
@@ -137,7 +137,7 @@ const gameBoard = {
     initPieces: function () {
         var col = 0, row = 0;
         var imgX, imgY, puzzlePiece;
-        
+
         this.playingBoard = this.getPlayingBoard();
 
         // While we're still in the image size, slice and dice into separate pieces
@@ -147,14 +147,14 @@ const gameBoard = {
             puzzlePiece = new PuzzlePiece(imgX, imgY, this.pieceSize);
             this.pieces.push(puzzlePiece);
             this.slots.push(new PuzzleSlot(imgX, imgY, this.pieceSize, this.playingBoard, puzzlePiece));
-            
+
             col++;
             if ( col * this.pieceSize >= this.image.width ) {
                 col = 0;
                 row++;
             }
         }
-        
+
         // Scramble the pieces into the puzzle piece area, and set up handlers
         this.scramblePieces();
         this.redraw();
@@ -168,9 +168,9 @@ const gameBoard = {
         this.canvas.onmousemove = function () {
             gameBoard.onMouseMove.apply(gameBoard, arguments);
         };
-        
+
         document.getElementById('startBtn').addEventListener('click', function () {
-            document.getElementById('instructions').style.display = 'none';
+            document.getElementById('level_2').style.display = 'none';
         });
         document.getElementById('playagainBtn').addEventListener('click', function () {
             let congratsDiv = document.getElementById('congrats');
@@ -180,7 +180,7 @@ const gameBoard = {
             gameBoard.redraw();
         });
     },
-    
+
     // Initiate the playing areas (space for scrambled pieces, and the actual puzzle board)
     initSpaces: function () {
         this.boardSpace = new Rectangle(0, 0, Math.max(this.canvas.width, this.MAX_PUZZLE_WIDTH), this.MAX_PUZZLE_HEIGHT + this.pieceSize);
@@ -192,17 +192,17 @@ const gameBoard = {
         let marginHorz = Math.floor( ( this.boardSpace.width - this.image.width ) / 2 );
         let marginVert = Math.floor( ( this.boardSpace.height - this.image.height ) / 2 );
         let playingBoard = new Rectangle(marginHorz, marginVert, marginHorz + this.image.width, marginVert + this.image.height);
-        
+
         return playingBoard;
     },
-    
+
     doWinShow: function () {
         // Player has won, do something to show this
         let congratsDiv = document.getElementById('congrats');
         congratsDiv.style.display = 'block';
         congratsDiv.classList.add('slidedown');
     },
-    
+
     // Since each puzzle slot is stationary where it should be, stroke a line around each.
     drawPuzzleOutline: function () {
         this.context.strokeStyle = "#000000";
@@ -213,7 +213,7 @@ const gameBoard = {
             this.context.strokeRect(s.left, s.top, s.width, s.height);
         }
     },
-    
+
     // Loop through each puzzle piece, and draw its current position
     drawPuzzlePieces: function () {
         var p;
@@ -228,7 +228,7 @@ const gameBoard = {
             }
         }
     },
-    
+
     // Return the puzzle piece at the given coordinate with the highest "z-index" (piece
     //  closest to the front).  If there are no pieces that apply, return false.
     getClickedPiece: function (canvasX, canvasY) {
@@ -245,11 +245,11 @@ const gameBoard = {
                 break;
             }
         }
-        
+
         // No piece clicked, return false
         return false;
     },
-    
+
     // Return the puzzle slot that is beneath the given coordinate
     getCurrentSlot: function (canvasX, canvasY) {
         // Find the slot we're currently moused over
@@ -258,11 +258,11 @@ const gameBoard = {
                 return this.slots[x];
             }
         }
-        
+
         // Return false by default
         return false;
     },
-    
+
     // Check win conditions
     hasPlayerWon: function () {
         for ( var x = 0, ln = this.slots.length; x < ln; x++ ) {
@@ -271,11 +271,11 @@ const gameBoard = {
                 return false;
             }
         }
-        
+
         // Made it through with all slots containing the correct piece? Congrats, game is won!
         return true;
     },
-    
+
     // Set a puzzle piece as highlighted
     highlightPiece: function ( puzzlePiece ) {
         puzzlePiece.isHighlighted = true;
@@ -285,7 +285,7 @@ const gameBoard = {
         this.context.drawImage(this.image, puzzlePiece.imageX, puzzlePiece.imageY, this.pieceSize, this.pieceSize, puzzlePiece.boardPosition.left, puzzlePiece.boardPosition.top, puzzlePiece.boardPosition.width, puzzlePiece.boardPosition.height);
         this.context.strokeRect(puzzlePiece.boardPosition.left + 1, puzzlePiece.boardPosition.top + 1, puzzlePiece.boardPosition.width - 2, puzzlePiece.boardPosition.height - 2);
     },
-    
+
     // Redraw the puzzle board
     //  TODO: Optimize! This clears everything and redraws it all - has to be a more
     //  efficient way of doing this
@@ -294,13 +294,13 @@ const gameBoard = {
         this.drawPuzzleOutline();
         this.drawPuzzlePieces();
     },
-    
+
     // Place pieces in random positions in the piece area
     scramblePieces: function () {
         var drawWidth = this.pieceSpace.width - this.pieceSize;
         var drawHeight = this.pieceSpace.height - this.pieceSize;
         var x = 0, y = 0, p;
-        
+
         for ( var i = 0, ln = this.pieces.length; i < ln; i++ ) {
             x = Math.floor( Math.random() * drawWidth );
             y = Math.floor( Math.random() * drawHeight );
@@ -308,24 +308,24 @@ const gameBoard = {
             p.setBoardPosition(x + this.pieceSpace.left, y + this.pieceSpace.top);
         }
     },
-    
+
     // Set a piece as unhighlighted
     unhighlightPiece: function ( puzzlePiece ) {
         this.highlightedPiece.isHighlighted = false;
         this.highlightedPiece = null;
         this.context.drawImage(this.image, puzzlePiece.imageX, puzzlePiece.imageY, this.pieceSize, this.pieceSize, puzzlePiece.boardPosition.left, puzzlePiece.boardPosition.top, puzzlePiece.boardPosition.width, puzzlePiece.boardPosition.height);
     },
-    
+
     // Mouse down handler
     //  Initiate the drag event, if there has been a puzzle piece clicked
     onMouseDown: function (e) {
         var canvasX = e.layerX;
         var canvasY = e.layerY;
-        
+
         if ( this.highlightedPiece && !this.highlightedPiece.boardPosition.contains(canvasX, canvasY) ) {
             this.unhighlightPiece(this.highlightedPiece);
         }
-        
+
         // Has the player put the mouse down on a puzzle piece?  Set things up for the drag event
         var puzzlePiece = this.getClickedPiece(canvasX, canvasY);
         if ( puzzlePiece ) {
@@ -347,7 +347,7 @@ const gameBoard = {
             }
         }
     },
-    
+
     // Mouse move handler
     //  If we're dragging, handle the movement of the puzzle piece
     onMouseMove: function (e) {
@@ -357,7 +357,7 @@ const gameBoard = {
             var canvasY = e.layerY;
             //var canvasX = e.pageX - this.canvas.offsetLeft;
             //var canvasY = e.pageY - this.canvas.offsetTop;
-            
+
             if ( this.playingBoard.contains(canvasX, canvasY) ) {
                 // Player has dragged a piece over the puzzle outline - find out which slot
                 //  and "snap" the piece to it
@@ -370,11 +370,11 @@ const gameBoard = {
                 // Move the piece along with the mouse
                 this.highlightedPiece.setBoardPosition(canvasX - this.dragOffset.x, canvasY - this.dragOffset.y);
             }
-            
+
             this.redraw();
         }
     },
-    
+
     // Mouse up handler
     //  End the drag event, place the puzzle piece in the slot (if applicable).
     onMouseUp: function (e) {

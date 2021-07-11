@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop Puzzle</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+<embed src="images/audio.mp3" hidden="true" autostart="true">
+
+
+<section id="game-space">
+    <canvas id="game-board"></canvas>
+
+    <div id="congrats" >
+        <img id="congo" src="images/check-mark-clipart-transparent-6-removebg-preview.png">
+        <p><a href="level2image.html"><button id="playagainBtn">LEVEL 2</button></a></p>
+    </div>
+</section>
+<script type="text/javascript" src="js/puzzle.js"></script>
+<script type="text/javascript">
+    // Everything is set up, get it all started when the document has loaded
+    window.addEventListener('load', function () {
+        gameBoard.init();
+    });
+</script>
+</body>
+</html>
